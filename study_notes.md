@@ -442,7 +442,8 @@ The first helper function in the farm example, printZeroPaddedWithLabel, is call
 
 * A pure function is a specific kind of value-producing function that not only has no side effects but also doesn’t rely on side effects from other code.
 
-### Math.random()
+
+### Math.random() operator
 The static method returns a floating-point, pseudo-random number that's greater than or equal to 0 and less than 1. wWith approximately uniform distribution over that range - which you can then scale to your desired range. 
 
 ```javascript
@@ -458,4 +459,103 @@ console.log(getRandomInt(1));
 
 console.log(Math.random());
 // Expected output: a number from 0 to <1
+```
+**Useful Examples**
+
+
+```javascript
+// 0 -> 10
+Math.floor(Math.random() * 11);
+
+// 1 -> 10
+Math.floor(Math.random() * 10) + 1;
+
+// 5 -> 20
+Math.floor(Math.random() * 16) + 5;
+
+// -10 -> (-2)
+Math.floor(Math.random() * 9) - 10;
+```
+
+
+## Global vs Local Scopes
+
+### Question 
+What will the above code output? If you're not sure, take a guess anyway and then run it in your node REPL or by pasting the code into a file and running it.
+
+### My Answer:
+```
+-- Inside printMyVars --
+myLocalVar is: local
+myGlobalVar is: global
+-- Outside of printMyVars now --
+```
+### Correct Answer
+```
+-- Inside printMyVars --
+myLocalVar is: local
+myGlobalVar is: global
+-- Outside of printMyVars now --
+ReferenceError: myLocalVar is not defined
+```
+>But why is it ReferenceError?
+
+
+
+# Rules of function 
+1. Give your functions precise verb/action based names
+2. Use `camelCasedNames` (like this one)
+3. Properly indent the function code
+4. Functions should focus on a single task: returning a value or causing a side effect. Break your function into *additional smaller functions if you find it doing two or more things*
+* One single task could be to compute and return a value (eg: `zeroPad`)
+* Another single task could be to perform a side effect such as logging a message to the screen (eg: `printFarmInventory`)
+5. Data needed by Functions should be passed in as parameters/arguments (i.e. local scope) instead of being accessed directly
+
+
+
+It is ideal if functions try to avoid reading outer scope variables. If a function needs some information / data, then that data should instead be passed in as a parameter, making it available within the function's *inner scope*.
+
+### Example:
+The example below illustrates a good vs bad example: 
+
+```javascript
+const person = "Martha";
+
+// BAD
+const sayHelloBadly = function() {
+  console.log(`Howdy, ${person}`);
+}
+sayHelloBadly(); // Works, but not ideal!
+
+// GOOD
+const sayHelloGoodly = function(name) {
+  console.log(`Howdy, ${name}`);
+}
+sayHelloGoodly(person);
+```
+`sayHelloGoodly` in the example above takes in the name of the person as a `"parameter"` (also known as an "argument"). This is considered better than than the `sayHelloBadly` implementation which accesses the outer/global `person` information directly.
+
+### Why?
+Functions that take in parameters are more reusable, since they are less dependent on their surroundings, (i.e. their outer scope).
+
+From the example above, we can extract the `sayHelloGoodly` function and plop drop it into another piece of code. We can't do that with `sayHelloBadly` because the `person` variable would have to come along for the ride.
+
+<br>
+<br>
+
+# _.without(array, [values])
+Creates an array excluding all given values using SameValueZero for equality comparisons. 
+
+**Note**: Unlike _.pull, this method returns a new array.
+#### Arguments
+<array (Array)>: The array to inspect. 
+<[values] (...*)>: The values to exclude.
+
+#### Returns
+<(Array)>: Returns the new array of filtered values. 
+
+### Example
+```javascript
+_.without([2, 1, 2, 3], 1, 2); 
+// => [3]
 ```
