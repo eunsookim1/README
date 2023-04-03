@@ -176,8 +176,46 @@ function isBigEnough(value) {
 const filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
 //filtered is [12, 130, 44]
 ```
+## Arrow Functions
 
-#### Find all prime numbers in an array
+One of th emain differences between arrows and regular functions is that arrow functions can only be anonymous. They are not bound to any identifier. Arrow functions do not bind their own; instead they inherit the one from the parent scope, called "lexical scoping". It makes arrow functions an excellent choice in some scenarios but a terrible one in others. If you'd like to call or reuse an arrow function, you must assign it to a variable. 
+
+Arrow functions do not declare their own scope. Arrow functions inherit parent scope. 
+
+## 'this'
+Arrow functions do not bind their own `this`, instead, they inherit the one from their parent scope, which is called "lexical scoping". This makes arrow functions to be a great choice in some scenarios but a very bad one in others. 
+
+```js
+// function definition
+const myFunction = () => {
+  console.log(this);
+};
+
+// call it 
+myFunction();
+```
+With normal functions the scoped is bound to the global one by default, arrows functions, do not have their own `this` but they inherit it from the parent scope, in this case the global one. 
+
+```js
+myObject.myMehtod() // this === window or global object
+
+const myMethod = myObject.myMethod;
+myMethod() // this === window or global object
+```
+
+### Arrow functions as methods
+```js
+const myObject = {
+  myMethod: () => {
+    console.log(this);
+  }
+};
+```
+
+<br>
+<br>
+
+## Find all prime numbers in an array
 ```js
 const array = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7,8, 9, 10, 11, 12, 13];
 
@@ -247,3 +285,14 @@ The following examples use `filter()` to create a filterd JSON of all elements w
 
  fjgh,jt## Filtering invalid entries from JSON
 The following examples use `filter()` to create a filterd JSON of all elements with non-zero, numeric `id`. 
+
+
+
+<br>
+<br>
+
+# Quiz Review
+1. Best definition of a Higher-order function is: 
+>A function that takes a function as an argument, or returns a function as a result. 
+2. Higher-order functions allow for creation of more powerful and generalized functions. It's job is reduced in scope when you allow it to interact with other functions. 
+3. Aa anonymous function is a nameless function defined inline or assigned to a variable. It may or may not be used as a callback function. 
