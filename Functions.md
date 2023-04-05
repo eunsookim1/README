@@ -9,8 +9,12 @@ Traditional anonymous function:
 (function (a) { 
   return a + 100;
 })
+```
+<br>
+<br>
 
 
+```js
 // 1. Remove the word "function and place arrow between the argument and opening body bracket
 (a) => {
   return a + 100;
@@ -90,37 +94,19 @@ Returning object literals using te concise body does not work, gives out undefin
 const func = () => ({ foo: 1 });
 ```
 
-## Converting a for loop to forEach
-```js
-const items = ['item1', 'item2', 'item3'];
-const copyItems = [];
 
-// before
-for (let i = 0; i < items.length; i++) {
-  copyItems.push(items[i]);
-}
-bnvm
-// after
-items.forEach((item) => {
-  copyItems.push(item);
-});
-```
+<br>
+<br>
 
-Prototypes are the mechanism by which JavaScript objects inherit features from one another. 
-object constructor function:
-```js
-//constructor function
-function person () {
-  this.name = 'John',
-  this.age = 23
-};
-```
-[label](https://www.tutorialsteacher.com/codeeditor?cid%3Doojs-42)
-```js
-// creating objects
-const person1 = new Person();
-const person2 = new Person();
-```
+
+## Arrow functions revisited
+Not only a "shorthand" for writing small stuff. They have some very specific and useful features. 
+
+Creating a function and passing it somewhere, and not wanting to leave the current context. That's where arrow functions come in handy. 
+
+- Can't be used as constructs. They can't be called with `new`. 
+
+## Anonymous Functions
 
 In JS, every function and object has a property named prototype by default. For example, 
 
@@ -131,6 +117,8 @@ function Person () {
 ```
 
 Anonymous functions are often declared while being passed in as callbacks to other functions. Why? Because the receiving function that takes in the anonymous function will give that parameter a name anyway. 
+
+
 
 
 ## Filtering Using Callbacks
@@ -212,84 +200,6 @@ const myObject = {
 };
 ```
 
-<br>
-<br>
-
-## Find all prime numbers in an array
-```js
-const array = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7,8, 9, 10, 11, 12, 13];
-
-function isPrime(num) {
-  for (let i = 2; num > i; i++) {
-    if (num % i === 0) {
-      return false; 
-    }
-  }
-  return num > 1; 
-}
-
-console.log(array.filter(isPrime)); // [2, 3, 5, 7, 11, 13]
-```
----
->JSON stands for JavaScript Object Notation.
->JSON is a lightweight data interchange format. 
->JSON is language independent.
-JSON is "self-describing" and easy to understand. 
-
-### JSON Example
-This JSON syntax defines an employees object: an array of 3 employees records (objects):
-```js
-{
-  "employees": [
-  {"firstName":"John", "lastName":"Doe"},
-  {"firstName":"Anna", "lastName":"Smith"},
-  {"firstName":"Peter", "lastName":"Jones"}
-  ]
-}
-```
-The JSON format is syntactically identical to the code for creating JavaScript Objects. 
-Because of this similarity, a JavaScript program can easily convert JSON data into native JavaScript objects. 
-
-### JSON Syntax Rules
-* Data is name/value pairs
-* Data is separated by commas
-* Curly braces hold objects
-* Square brackets hold arrays
-
-#### JSON Data - A Name and a Value
-JSON data is written as name/value pairs, just like JavaScript Object properties. 
-A name/value pair consists of a filed name (in double quotes), followed by a colon, followed by a value: 
-```js
-"firstName": "Jason"
-```
-### JSON Objects
-JSON objects are written inside curly braces.
-Just like in JavaScript, objects can contain multiple name/value pairs: 
-{"firstName": "John", "lastName": "Doe"}
-
-### JSON Arrays
-JSON arrays are written inside square brackets.
-Just like JavaScript, an array can contain objects:
-```js
-"employees":[
-  {"firstName":"John", "lastName":"Doe"},
-  {"firstName":"Anna", "lastName":"Smith"},
-  {"firstName":"Peter", "lastName":"Jones"}
-]
-```
----
-
-
-## Filtering invalid entries from JSON
-The following examples use `filter()` to create a filterd JSON of all elements with non-zero, numeric `id`. 
-
- fjgh,jt## Filtering invalid entries from JSON
-The following examples use `filter()` to create a filterd JSON of all elements with non-zero, numeric `id`. 
-
-
-
-<br>
-<br>
 
 # Quiz Review
 1. Best definition of a Higher-order function is: 

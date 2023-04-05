@@ -136,3 +136,21 @@ for (let prop1 in obj) {
     }
   }
 }
+```
+
+
+## Converting a for loop to forEach
+```js
+const items = ['item1', 'item2', 'item3'];
+const copyItems = [];
+
+// before
+for (let i = 0; i < items.length; i++) {
+  copyItems.push(items[i]);
+}
+bnvm
+// after
+items.forEach((item) => {
+  copyItems.push(item);
+});
+```
