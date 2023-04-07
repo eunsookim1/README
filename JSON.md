@@ -21,7 +21,8 @@ console.log(array.filter(isPrime)); // [2, 3, 5, 7, 11, 13]
 >JSON is a lightweight data interchange format. 
 >JSON is language independent.
 JSON is "self-describing" and easy to understand. 
-
+>In JSON, data is represented as key-alue pairs, where the keys are strings and the values can be strings, numbers, objects, arrays, booleans, or null. 
+>It is often used in web applications to transmit data in a structred way between the client and the server. 
 ### JSON Example
 This JSON syntax defines an employees object: an array of 3 employees records (objects):
 ```js
@@ -71,5 +72,4 @@ The following examples use `filter()` to create a filterd JSON of all elements w
 
  fjgh,jt## Filtering invalid entries from JSON
 The following examples use `filter()` to create a filterd JSON of all elements with non-zero, numeric `id`. 
-
 
